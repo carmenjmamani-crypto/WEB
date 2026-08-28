@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karmen Cotacallapa | Agente Inmobiliario</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Framework para Flat Design rápido y responsive) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Configuración de Tailwind con tus colores y tipografías -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#BF940A',
+                        navy: '#1A1B1F',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados para Flat Design y animaciones suaves */
+        body {
+            background-color: #FFFFFF;
+            color: #1A1B1F;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .nav-link {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Botones Flat Design */
+        .btn-flat {
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+        .btn-flat:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* Menú Móvil Animación Fluida */
+        #mobile-menu {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hamburger-line {
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        /* Efecto Flat en Tarjetas */
+        .flat-card {
+            border: 1px solid #e5e7eb;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .flat-card:hover {
+            transform: translateY(-5px);
+            border-color: #BF940A;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- Navegación -->
+    <header class="fixed w-full top-0 z-50 bg-navy text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#inicio" class="text-2xl font-bold tracking-tighter hover:text-gold transition-colors">
+                        KARMEN<span class="text-gold">.</span>
+                    </a>
+                </div>
+
+                <!-- Menú Escritorio -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="nav-link text-sm hover:text-gold transition-colors">Inicio</a>
+                    <a href="#sobre-mi" class="nav-link text-sm hover:text-gold transition-colors">Sobre Mí</a>
+                    <a href="#vision" class="nav-link text-sm hover:text-gold transition-colors">Mi Visión</a>
+                    <a href="#negocios" class="nav-link text-sm hover:text-gold transition-colors">Mis Negocios</a>
+                    <a href="#contacto" class="nav-link text-sm text-gold font-bold hover:text-white transition-colors">Contacto</a>
+                </nav>
+
+                <!-- Botón Menú Móvil (Hamburguesa) -->
+                <div class="md:hidden flex items-center">
+                    <button id="hamburger-btn" class="text-white hover:text-gold focus:outline-none p-2" aria-label="Abrir menú">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="line-top" class="hamburger-line" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16"></path>
+                            <path id="line-middle" class="hamburger-line" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16"></path>
+                            <path id="line-bottom" class="hamburger-line" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="fixed inset-0 bg-navy z-40 transform translate-x-full md:hidden flex flex-col justify-center items-center h-screen">
+            <nav class="flex flex-col space-y-8 text-center w-full px-6">
+                <a href="#inicio" class="mobile-link nav-link text-3xl font-bold hover:text-gold transition-colors">Inicio</a>
+                <a href="#sobre-mi" class="mobile-link nav-link text-3xl font-bold hover:text-gold transition-colors">Sobre Mí</a>
+                <a href="#vision" class="mobile-link nav-link text-3xl font-bold hover:text-gold transition-colors">Mi Visión</a>
+                <a href="#negocios" class="mobile-link nav-link text-3xl font-bold hover:text-gold transition-colors">Mis Negocios</a>
+                <a href="#contacto" class="mobile-link nav-link text-3xl font-bold text-gold hover:text-white transition-colors">Contacto</a>
+                
+                <div class="pt-8 border-t border-gray-700 flex justify-center space-x-6">
+                    <a href="#" class="text-white hover:text-gold"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="text-white hover:text-gold"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="text-white hover:text-gold"><i data-lucide="youtube"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+        <!-- SECCIÓN: INICIO (Hero) -->
+        <section id="inicio" class="relative bg-navy text-white py-20 lg:py-32 overflow-hidden flex items-center min-h-[85vh]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-gold font-bold uppercase tracking-widest mb-4">Agente Inmobiliario & Inversionista</p>
+                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                        Prosperidad <br> con <span class="text-gold">propósito.</span>
+                    </h1>
+                    <p class="text-lg text-gray-300 mb-8 max-w-xl font-sans leading-relaxed">
+                        Construye patrimonio. Fortalece tu mente. Cultiva tu espíritu. Protege a tu familia. Crea la vida que mereces. No soy solo una agente, soy tu aliada estratégica.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#contacto" class="btn-flat bg-gold text-navy px-8 py-4 rounded-none text-center flex items-center justify-center gap-2">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i> Contáctame por WhatsApp
+                        </a>
+                        <a href="#negocios" class="btn-flat bg-transparent border-2 border-white text-white px-8 py-4 rounded-none text-center hover:bg-white hover:text-navy">
+                            Conoce mis servicios
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden lg:block relative">
+                    <!-- Flat Design Image Treatment -->
+                    <div class="absolute inset-0 bg-gold transform translate-x-4 translate-y-4"></div>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Karmen Cotacallapa Profesional" class="relative z-10 w-full object-cover h-[600px] grayscale hover:grayscale-0 transition duration-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: SOBRE MÍ -->
+        <section id="sobre-mi" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="order-2 lg:order-1 relative">
+                         <div class="absolute inset-0 bg-navy transform -translate-x-4 -translate-y-4"></div>
+                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reunión de Negocios Karmen" class="relative z-10 w-full object-cover h-[500px]">
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <h2 class="text-gold text-sm font-bold uppercase tracking-widest mb-2">Mi Historia</h2>
+                        <h3 class="text-4xl font-bold text-navy mb-6">Crecer para servir, prosperar para generar oportunidades.</h3>
+                        <div class="text-gray-600 space-y-4 font-sans leading-relaxed">
+                            <p>
+                                Soy Karmen Cotacallapa. Acompaño a personas y mujeres a construir una vida de prosperidad integral, combinando visión empresarial, educación financiera, generación de patrimonio y bienestar familiar.
+                            </p>
+                            <p>
+                                Creo firmemente que el verdadero éxito no consiste únicamente en alcanzar resultados económicos, sino en construir una vida equilibrada. Para mí, <strong>la alimentación sana y la hidratación son fundamentales</strong>; cuidar mi mente y mi cuerpo me da la energía necesaria para liderar con propósito.
+                            </p>
+                            <p>
+                                Mi enfoque es estratégico y disciplinado. <strong>A partir de las 9:00 de la mañana, mi prioridad absoluta es el trabajo con mis clientes</strong>, brindando atención personalizada y realizando visitas inmobiliarias con excelencia y dedicación. No busco únicamente generar transacciones, busco generar conocimiento, decisiones y patrimonio sostenible.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: MI VISIÓN DE VIDA -->
+        <section id="vision" class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-gold text-sm font-bold uppercase tracking-widest mb-2">Mi Filosofía</h2>
+                    <h3 class="text-4xl font-bold text-navy mb-4">Las 5 Dimensiones del Éxito</h3>
+                    <p class="text-gray-600">Mi visión es demostrar que estas dimensiones no tienen que competir entre sí: pueden crecer juntas para lograr una prosperidad integral.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                    <!-- Card 1 -->
+                    <div class="flat-card bg-white p-6 text-center border-t-4 border-t-gold">
+                        <div class="w-12 h-12 bg-navy text-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h4 class="font-bold text-navy mb-2">Familiar</h4>
+                        <p class="text-sm text-gray-500">Construir relaciones sólidas y crear bienestar para quienes forman parte de nuestra vida.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="flat-card bg-white p-6 text-center border-t-4 border-t-navy">
+                        <div class="w-12 h-12 bg-gold text-navy rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="briefcase"></i>
+                        </div>
+                        <h4 class="font-bold text-navy mb-2">Profesional</h4>
+                        <p class="text-sm text-gray-500">Desarrollar talento, liderazgo, conocimientos y una carrera o negocio con propósito.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="flat-card bg-white p-6 text-center border-t-4 border-t-gold">
+                        <div class="w-12 h-12 bg-navy text-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <h4 class="font-bold text-navy mb-2">Financiera</h4>
+                        <p class="text-sm text-gray-500">Aprender a generar ingresos, invertir y construir patrimonio de manera responsable.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="flat-card bg-white p-6 text-center border-t-4 border-t-navy">
+                        <div class="w-12 h-12 bg-gold text-navy rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <h4 class="font-bold text-navy mb-2">Espiritual</h4>
+                        <p class="text-sm text-gray-500">Fortalecer la fe, los valores y la gratitud que orientan nuestras decisiones.</p>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="flat-card bg-white p-6 text-center border-t-4 border-t-gold">
+                        <div class="w-12 h-12 bg-navy text-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="user-check"></i>
+                        </div>
+                        <h4 class="font-bold text-navy mb-2">Personal</h4>
+                        <p class="text-sm text-gray-500">Trabajar en la mentalidad, disciplina, bienestar y crecimiento continuo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: MIS NEGOCIOS -->
+        <section id="negocios" class="py-24 bg-navy text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                    <div class="max-w-2xl">
+                        <h2 class="text-gold text-sm font-bold uppercase tracking-widest mb-2">Servicios 360°</h2>
+                        <h3 class="text-4xl font-bold mb-4">Intermediación & Asesoría Inmobiliaria</h3>
+                        <p class="text-gray-400">Lidero negocios e inversiones con visión estratégica, creando oportunidades para proteger y multiplicar tu patrimonio.</p>
+                    </div>
+                    <a href="#contacto" class="btn-flat mt-6 md:mt-0 bg-gold text-navy px-6 py-3 hidden md:inline-block">Agendar Asesoría</a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Servicio 1 -->
+                    <div class="bg-[#24262b] p-8 border-l-4 border-gold hover:bg-[#2a2d33] transition-colors">
+                        <i data-lucide="home" class="w-10 h-10 text-gold mb-6"></i>
+                        <h4 class="text-xl font-bold mb-3">Compra y Venta</h4>
+                        <p class="text-gray-400 text-sm">Gestión integral en la intermediación de propiedades, asegurando transacciones transparentes, seguras y altamente rentables.</p>
+                    </div>
+                    <!-- Servicio 2 -->
+                    <div class="bg-[#24262b] p-8 border-l-4 border-white hover:bg-[#2a2d33] transition-colors">
+                        <i data-lucide="building" class="w-10 h-10 text-white mb-6"></i>
+                        <h4 class="text-xl font-bold mb-3">Captación y Alquiler</h4>
+                        <p class="text-gray-400 text-sm">Posicionamiento estratégico de tu inmueble en el mercado para encontrar a los arrendatarios o compradores ideales en tiempo récord.</p>
+                    </div>
+                    <!-- Servicio 3 -->
+                    <div class="bg-[#24262b] p-8 border-l-4 border-gold hover:bg-[#2a2d33] transition-colors">
+                        <i data-lucide="pie-chart" class="w-10 h-10 text-gold mb-6"></i>
+                        <h4 class="text-xl font-bold mb-3">Asesoría de Inversión</h4>
+                        <p class="text-gray-400 text-sm">Educación financiera e inteligencia de mercado para identificar oportunidades de inversión y multiplicar tu patrimonio de forma segura.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CONTACTO -->
+        <section id="contacto" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gray-50 p-8 md:p-12 lg:p-16 relative overflow-hidden">
+                    <!-- Elemento decorativo Flat -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-gold opacity-10 transform translate-x-32 -translate-y-32 rounded-full"></div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+                        <div>
+                            <h2 class="text-4xl font-bold text-navy mb-6">Demos el primer paso.</h2>
+                            <p class="text-gray-600 mb-10">Construir un legado requiere decisión. Contáctame para agendar una reunión o visitar propiedades juntos. Estoy aquí para escucharte y diseñar la mejor estrategia patrimonial para ti.</p>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <i data-lucide="map-pin" class="w-6 h-6 text-gold mt-1 mr-4"></i>
+                                    <div>
+                                        <h5 class="font-bold text-navy">Dirección</h5>
+                                        <p class="text-gray-600">Calle Paucarpata 130<br>Arequipa, Perú</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="phone" class="w-6 h-6 text-gold mt-1 mr-4"></i>
+                                    <div>
+                                        <h5 class="font-bold text-navy">WhatsApp</h5>
+                                        <a href="https://wa.me/51963324913" target="_blank" class="text-gray-600 hover:text-gold transition-colors">+51 963324913</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="mail" class="w-6 h-6 text-gold mt-1 mr-4"></i>
+                                    <div>
+                                        <h5 class="font-bold text-navy">Correo Electrónico</h5>
+                                        <a href="mailto:carmenjmamani@karmencotacallapa.com.pe" class="text-gray-600 hover:text-gold transition-colors">carmenjmamani@...com.pe</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulario Flat Design -->
+                        <div class="bg-white p-8 border border-gray-200">
+                            <form id="contact-form" class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-bold text-navy mb-2">Nombre completo</label>
+                                    <input type="text" id="name" class="w-full border-b-2 border-gray-300 py-2 px-1 focus:outline-none focus:border-gold transition-colors bg-transparent rounded-none" placeholder="Escribe tu nombre" required>
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-bold text-navy mb-2">Teléfono / WhatsApp</label>
+                                    <input type="tel" id="phone" class="w-full border-b-2 border-gray-300 py-2 px-1 focus:outline-none focus:border-gold transition-colors bg-transparent rounded-none" placeholder="Tu número de contacto" required>
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-bold text-navy mb-2">¿En qué puedo ayudarte?</label>
+                                    <textarea id="message" rows="4" class="w-full border-b-2 border-gray-300 py-2 px-1 focus:outline-none focus:border-gold transition-colors bg-transparent rounded-none resize-none" placeholder="Me interesa comprar, vender, asesoría..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn-flat w-full bg-navy text-white py-4 hover:bg-gold transition-colors font-bold tracking-wider">
+                                    ENVIAR MENSAJE
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0f1013] text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <a href="#inicio" class="text-2xl font-bold tracking-tighter">
+                    KARMEN<span class="text-gold">.</span>
+                </a>
+                <p class="text-gray-500 text-sm mt-2">© 2026 Karmen Cotacallapa. Todos los derechos reservados.</p>
+            </div>
+            
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors"><i data-lucide="facebook"></i></a>
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors"><i data-lucide="instagram"></i></a>
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors"><i data-lucide="video"></i> <!-- Icono alternativo para TikTok --></a>
+                <a href="#" class="text-gray-400 hover:text-gold transition-colors"><i data-lucide="youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para Interactividad (Hamburguesa fluida y configuración de íconos) -->
+    <script>
+        // Inicializar Lucide Icons
+        lucide.createIcons();
+
+        // Lógica del menú móvil (Hamburguesa)
+        const btn = document.getElementById('hamburger-btn');
+        const menu = document.getElementById('mobile-menu');
+        const lineTop = document.getElementById('line-top');
+        const lineMiddle = document.getElementById('line-middle');
+        const lineBottom = document.getElementById('line-bottom');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        
+        let menuOpen = false;
+
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+            
+            if (menuOpen) {
+                // Abrir menú
+                menu.classList.remove('translate-x-full');
+                menu.classList.add('translate-x-0');
+                
+                // Animar icono a "X"
+                lineTop.setAttribute('d', 'M6 18L18 6');
+                lineMiddle.setAttribute('opacity', '0');
+                lineBottom.setAttribute('d', 'M6 6l12 12');
+                
+                // Cambiar color del botón si está sobre fondo claro/oscuro
+                btn.classList.add('text-gold');
+            } else {
+                // Cerrar menú
+                menu.classList.remove('translate-x-0');
+                menu.classList.add('translate-x-full');
+                
+                // Restaurar icono hamburguesa
+                lineTop.setAttribute('d', 'M4 6h16');
+                lineMiddle.setAttribute('opacity', '1');
+                lineBottom.setAttribute('d', 'M4 18h16');
+                
+                btn.classList.remove('text-gold');
+            }
+        }
+
+        btn.addEventListener('click', toggleMenu);
+
+        // Cerrar menú al hacer clic en un enlace móvil
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if(menuOpen) toggleMenu();
+            });
+        });
+
+        // Prevenir el envío por defecto del formulario para demostración
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Me pondré en contacto contigo pronto.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
